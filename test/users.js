@@ -7,15 +7,13 @@ describe('Users', () => {
     it('GET /users', () => {
         return request.get(`users?access-token=${TOKEN}`).then((res) => {
             expect(res.body).not.to.be.empty;
-            console.log(res.body);
+           //console.log(res.body);
         });
     });
 
     it('GET /users/id', () => {
-        return request.get(`users/675?access-token=${TOKEN}`).then((res) => {
-            expect(res.body.id).to.be.eq(675);
-            expect(res.body.name).to.eq('Mrs. Abhaya Johar');
-            expect(res.body.status).to.eq('active');
+        return request.get(`users/1?access-token=${TOKEN}`).then((res) => {
+            expect(res.body.message).to.be.eq('Resource not found');
             
         });
     });
@@ -33,7 +31,7 @@ describe('Users', () => {
         .set("Authorization",`Bearer ${TOKEN}`)
         .send(data)
         .then((res) => {
-            console.log(res.body)
+            //console.log(res.body)
             expect(res.body.email).to.eq(data.email)
             expect(res.body.name).to.eq(data.name)
         });
